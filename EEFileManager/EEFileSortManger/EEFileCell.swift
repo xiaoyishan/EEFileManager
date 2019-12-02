@@ -41,7 +41,12 @@ class EEFileCell: UITableViewCell {
                 }
             }
             fileTitleLaebl.text = _fileModel?.name
-            fileDescriptionLaebl.text = String((_fileModel?.creatDate.description)!).prefix(16) + "   " + _fileModel!.size
+            
+            let dformatter = DateFormatter()
+            dformatter.dateFormat = "yyyy-MM-dd HH:mm"
+            let datestr = dformatter.string(from:_fileModel?.creatDate as! Date)
+            
+            fileDescriptionLaebl.text = datestr + "   " + _fileModel!.size
             
         }
     }
